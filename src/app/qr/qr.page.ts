@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-qr',
@@ -10,7 +11,10 @@ import { AlertController } from '@ionic/angular';
 export class QrPage {
   barcodes: any[] = [];
 
-  constructor(private alertController: AlertController) {}
+  constructor(
+    private alertController: AlertController,
+    private router: Router
+  ) {}
 
   async escanearQR() {
     try {
@@ -25,7 +29,10 @@ export class QrPage {
       const { barcodes } = await BarcodeScanner.scan();
       this.barcodes.push(...barcodes);
 
-      // Puedes realizar acciones adicionales con los códigos escaneados si es necesario
+      // Redirigir a la página de asistencia si se encuentra un código QR
+      if (barcodes.length > 0) {
+        this.router.navigate(['/asistencia']);
+      }
 
     } catch (error) {
       console.error('Error al escanear el QR', error);

@@ -1,27 +1,38 @@
-/* qr.page.scss */
-
-.qr-page {
-  background-color: #f0f0f0; /* Fondo gris claro */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+/* Estilos adicionales para la página qr-page */
+ion-content.qr-page {
+  background-color: #f5f5f5; /* Color de fondo de la página */
 }
 
-.qr-subtitle {
-  font-size: 1.5em; /* Tamaño grande del subtitulo */
-  text-align: center;
-  margin-bottom: 16px; /* Espaciado inferior */
+ion-title {
+  font-size: 1.5rem; /* Tamaño del texto del título */
 }
 
-ion-card {
-  max-width: 80%; /* Ancho máximo del card */
-  text-align: center;
+ion-list {
+  margin-top: 20px; /* Margen superior del ion-list */
 }
 
-ion-button {
-  margin-top: 16px; /* Espaciado superior para el botón */
-  --background: #3498db; /* Fondo azul */
-  --color: #ecf0f1; /* Texto claro */
-  --border-radius: 8px;
+ion-item {
+  border-bottom: 1px solid #ccc; /* Línea divisoria entre elementos */
+}
+
+ion-input {
+  font-size: 1rem; /* Tamaño del texto del ion-input */
+}
+
+/* Estilos del botón de escanear */
+ion-fab-button {
+  --background: #3880ff; /* Color de fondo del botón */
+  --border-radius: 50%; /* Borde redondeado */
+  --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra del botón */
+  --color: #fff; /* Color del ícono */
+}
+
+ion-icon {
+  font-size: 2rem; /* Tamaño del ícono */
+}
+
+/* Estilos del subtítulo */
+.subtitle {
+  font-size: 1rem; /* Tamaño del texto del subtítulo */
+  color: #555; /* Color del texto del subtítulo */
 }
