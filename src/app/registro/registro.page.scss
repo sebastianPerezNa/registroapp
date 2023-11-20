@@ -1,62 +1,73 @@
-/* Agrega estos estilos al archivo registro.page.scss */
-
 ion-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  height: 100vh; /* Usa la altura completa del viewport */
   background: linear-gradient(#141e30, #243b55);
 }
 
 ion-card {
-  width: 400px;
+  width: 80%;
+  max-width: 400px;
   padding: 40px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
+  margin: auto;
 }
 
-ion-card-header ion-card-title {
-  margin: 0 0 30px;
-  padding: 0;
-  color: #fff;
+ion-card-header {
   text-align: center;
+}
+
+ion-card-title {
+  color: #fff;
   font-size: 24px;
   font-weight: bold;
 }
 
-ion-card-content form ion-item {
+ion-card-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+ion-item {
   margin-bottom: 20px;
 }
 
-ion-card-content form ion-item ion-label {
-  font-size: 16px;
+ion-label {
   color: #fff;
+  font-size: 16px;
 }
 
-ion-card-content form ion-item ion-input {
+ion-input,
+ion-select {
   width: 100%;
   font-size: 16px;
   color: #fff;
   border: none;
   border-bottom: 1px solid #fff;
   background: transparent;
-  padding-left: 0; /* Elimina el espacio adicional a la izquierda */
+  padding-left: 0;
+
+  --highlight-color-focused: #fff;
 }
 
-ion-card-content form ion-item ion-input:focus {
-  border-color: #03e9f4; /* Cambia el color del borde al enfocar */
+ion-item ion-input:focus,
+ion-item ion-select:focus {
+  border-color: #03e9f4;
 }
 
-ion-card-content form ion-button {
+ion-button {
   margin-top: 20px;
-  letter-spacing: 4px;
+  letter-spacing: 2px;
+  width: 100%;
 }
 
-ion-card-content form ion-button:hover {
-  background: #03e9f4;
-  color: #fff;
+ion-button:hover {
+  --background: #03e9f4;
+  --color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
 }

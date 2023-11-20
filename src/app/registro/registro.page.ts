@@ -75,6 +75,7 @@ export class RegistroPage implements OnInit {
       };
 
       this.storage.set('datosRegistro', JSON.stringify(datosRegistro)).then(() => {
+        console.log('Datos de Registro Almacenados:', datosRegistro);
         this.presentAlert('Su registro ha sido exitoso. Puede iniciar sesión ahora.');
         this.router.navigate(['/login']);
       });
