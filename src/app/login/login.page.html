@@ -1,0 +1,23 @@
+<ion-content class="login-content">
+  <ion-card class="login-card">
+    <ion-card-header>
+      <ion-card-title>App de Registro de Asistencia</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="login()">
+        <ion-item>
+          <ion-label position="floating">Usuario</ion-label>
+          <ion-input type="text" name="username" [(ngModel)]="username" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password" name="password" [(ngModel)]="password" required></ion-input>
+        </ion-item>
+        <ion-button expand="full" color="primary" (click)="login()">Ingresar</ion-button>
+
+        <ion-button expand="full" color="secondary" (click)="goToRegistroPage()">Registrarse</ion-button>
+        <ion-button expand="full" color="secondary" (click)="goToRecuperarContrasenaPage()">Recuperar Contraseña</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

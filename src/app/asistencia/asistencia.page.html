@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Bienvenido Clase Registrada
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" class="asistencia-page">
+  <ion-card>
+    <ion-card-header>
+      <ion-title>Registro de Asistencia</ion-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>Hora actual: {{ getCurrentTime() }}</p>
+      <p>Nombre profesor: Francisco Iturra</p>
+      <p>Sala: L9</p>
+      <p>Latitud: {{ latitude }}</p>
+      <p>Longitud: {{ longitude }}</p>
+      <ion-button expand="full" (click)="tomarSelfie()">
+        Tomar Selfie
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Mostrar la imagen debajo del botón -->
+  <div *ngIf="selfieImage">
+    <img [src]="selfieImage" alt="Selfie">
+  </div>
+</ion-content>

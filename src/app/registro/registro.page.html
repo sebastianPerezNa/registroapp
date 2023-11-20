@@ -1,0 +1,45 @@
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Registro</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form (ngSubmit)="registro()">
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input type="text" name="nombre" [(ngModel)]="nombre" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Apellido</ion-label>
+          <ion-input type="text" name="apellido" [(ngModel)]="apellido" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Usuario</ion-label>
+          <ion-input type="text" name="usuario" [(ngModel)]="usuario" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password" name="contrasena" [(ngModel)]="contrasena" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Seleccione la región</ion-label>
+          <ion-select [(ngModel)]="selectedRegion" name="selectedRegion" interface="popover">
+            <ion-select-option value="" disabled>Seleccione la región</ion-select-option>
+            <ion-select-option *ngFor="let region of regions" [value]="region.id">{{ region.nombre }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Seleccione la comuna</ion-label>
+          <ion-select [(ngModel)]="selectedComuna" name="selectedComuna" interface="popover">
+            <ion-select-option value="" disabled>Seleccione la comuna</ion-select-option>
+            <ion-select-option *ngFor="let comuna of comunas" [value]="comuna.id">{{ comuna.nombre }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-button expand="full" type="submit" color="primary">Registrarse</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

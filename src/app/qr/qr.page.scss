@@ -1,0 +1,27 @@
+/* qr.page.scss */
+
+.qr-page {
+  background-color: #f0f0f0; /* Fondo gris claro */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-subtitle {
+  font-size: 1.5em; /* Tamaño grande del subtitulo */
+  text-align: center;
+  margin-bottom: 16px; /* Espaciado inferior */
+}
+
+ion-card {
+  max-width: 80%; /* Ancho máximo del card */
+  text-align: center;
+}
+
+ion-button {
+  margin-top: 16px; /* Espaciado superior para el botón */
+  --background: #3498db; /* Fondo azul */
+  --color: #ecf0f1; /* Texto claro */
+  --border-radius: 8px;
+}

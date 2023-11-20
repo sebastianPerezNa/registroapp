@@ -1,0 +1,62 @@
+/* Agrega estos estilos al archivo registro.page.scss */
+
+ion-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: linear-gradient(#141e30, #243b55);
+}
+
+ion-card {
+  width: 400px;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+ion-card-header ion-card-title {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+ion-card-content form ion-item {
+  margin-bottom: 20px;
+}
+
+ion-card-content form ion-item ion-label {
+  font-size: 16px;
+  color: #fff;
+}
+
+ion-card-content form ion-item ion-input {
+  width: 100%;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  padding-left: 0; /* Elimina el espacio adicional a la izquierda */
+}
+
+ion-card-content form ion-item ion-input:focus {
+  border-color: #03e9f4; /* Cambia el color del borde al enfocar */
+}
+
+ion-card-content form ion-button {
+  margin-top: 20px;
+  letter-spacing: 4px;
+}
+
+ion-card-content form ion-button:hover {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
+}
