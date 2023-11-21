@@ -21,11 +21,12 @@
       <ion-button expand="full" (click)="tomarSelfie()">
         Tomar Selfie
       </ion-button>
+
+      <!-- Mostrar la imagen debajo del botón con un marco y título -->
+      <div *ngIf="selfieImage" class="selfie-container">
+        <h2>Foto del alumno</h2>
+        <img [src]="selfieImage" alt="Selfie" class="selfie-image">
+      </div>
     </ion-card-content>
   </ion-card>
-
-  <!-- Mostrar la imagen debajo del botón -->
-  <div *ngIf="selfieImage">
-    <img [src]="selfieImage" alt="Selfie">
-  </div>
 </ion-content>

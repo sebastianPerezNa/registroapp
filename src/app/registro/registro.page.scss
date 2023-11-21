@@ -2,7 +2,7 @@ ion-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Usa la altura completa del viewport */
+  height: 100vh;
   background: linear-gradient(#141e30, #243b55);
 }
 
@@ -45,7 +45,7 @@ ion-input,
 ion-select {
   width: 100%;
   font-size: 16px;
-  color: #fff;
+  color: #000; /* Cambiado a negro para mejorar la legibilidad */
   border: none;
   border-bottom: 1px solid #fff;
   background: transparent;

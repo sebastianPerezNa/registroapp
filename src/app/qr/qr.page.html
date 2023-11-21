@@ -1,15 +1,17 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="irAAsistencia()">
+        Ir a Asistencia
+      </ion-button>
+    </ion-buttons>
     <ion-title>Registro de Asistencia</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding qr-page">
-  <ion-row class="ion-padding-top">
-    <ion-col>
-      <ion-label class="subtitle">Escanea el QR para el registro</ion-label>
-    </ion-col>
-  </ion-row>
+  <!-- Resto del contenido existente -->
+  <!-- ... -->
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button (click)="escanearQR()">

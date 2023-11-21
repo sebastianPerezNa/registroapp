@@ -165,3 +165,21 @@ a.more-link {
   margin-top: 50px;
   letter-spacing: 1px;
 }
+
+/* error404.page.scss */
+
+.back-button {
+  position: absolute;
+  top: 10px; /* Ajusta la posición vertical según sea necesario */
+  left: 10px; /* Ajusta la posición horizontal según sea necesario */
+  background-color: #007bff; /* Color de fondo del botón */
+  color: #fff; /* Color del texto del botón */
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-button i {
+  margin-right: 5px; /* Espacio entre el ícono y el texto (si hay) */
+}

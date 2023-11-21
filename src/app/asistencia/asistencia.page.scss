@@ -1,28 +1,52 @@
 /* asistencia.page.scss */
 
 .asistencia-page {
-  background-color: #ecf0f1; /* Fondo gris claro */
+  background-color: #f8f9fa; /* Fondo gris claro */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 16px;
 }
 
 ion-card {
-  max-width: 80%;
+  max-width: 400px; /* Ancho máximo del ion-card */
   text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  background-color: #ffffff; /* Fondo blanco */
+  padding: 20px;
   margin-bottom: 16px;
 }
 
 ion-button {
-  --background: #3498db; /* Fondo azul */
-  --color: #ecf0f1; /* Texto claro */
+  --background: #007bff; /* Fondo azul brillante */
+  --color: #ffffff; /* Texto blanco */
   --border-radius: 8px;
-  margin-bottom: 16px;
+  margin-top: 16px;
 }
 
 img {
   max-width: 100%;
   border-radius: 8px;
   margin-top: 16px;
+}
+
+.selfie-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.selfie-image {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.selfie-container h2 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #007bff; /* Color azul brillante */
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
+import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class QrPage {
   barcodes: any[] = [];
+  registroCompleto: boolean = false;
 
   constructor(
     private alertController: AlertController,
@@ -18,44 +19,32 @@ export class QrPage {
 
   async escanearQR() {
     try {
-      // Solicitar permisos
-      const granted = await this.requestPermissions();
-      if (!granted) {
-        this.presentAlert();
+      // Utilizar la función startScan directamente
+      const result = await BarcodeScanner.startScan();
+
+      if (!result.hasContent) {
+        // Escaneo cancelado o no se detectó ningún código QR
         return;
       }
 
-      // Escanear códigos QR
-      const { barcodes } = await BarcodeScanner.scan();
-      this.barcodes.push(...barcodes);
-
-      // Redirigir a la página de asistencia si se encuentra un código QR
-      if (barcodes.length > 0) {
-        this.router.navigate(['/asistencia']);
-      }
-
+      // Código QR escaneado con éxito
+      this.router.navigate(['/asistencia']);
     } catch (error) {
       console.error('Error al escanear el QR', error);
+      this.presentAlert('Error al escanear el QR. Por favor, intenta de nuevo.');
     }
   }
 
-  async requestPermissions(): Promise<boolean> {
-    try {
-      // Solicitar permisos de la cámara
-      const result = await BarcodeScanner.requestPermissions();
-      return result.camera === 'granted' || result.camera === 'limited';
-    } catch (error) {
-      console.error('Error al solicitar permisos', error);
-      return false;
-    }
-  }
-
-  async presentAlert(): Promise<void> {
+  async presentAlert(message: string): Promise<void> {
     const alert = await this.alertController.create({
       header: 'Permiso denegado',
-      message: 'Por favor, concede permisos de cámara para utilizar el escáner de códigos QR.',
+      message: message,
       buttons: ['OK'],
     });
     await alert.present();
+  }
+
+  irAAsistencia() {
+    this.router.navigate(['/asistencia']);
   }
 }
