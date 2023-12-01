@@ -4,6 +4,13 @@ import { AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 import { HttpClient } from '@angular/common/http';
 
+interface Comuna {
+  id: number;
+  nombre: string;
+  region_id: number;
+  // Otros campos necesarios
+}
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.page.html',
@@ -17,8 +24,8 @@ export class RegistroPage implements OnInit {
   correo: string = '';
   selectedRegion: number = 0;
   regions: any[] = [];
-  comunas: any[] = [];
-  selectedComuna: any = null;
+  comunas: Comuna[] = [];
+  selectedComuna: Comuna | null = null;
 
   constructor(
     private router: Router,
@@ -32,12 +39,45 @@ export class RegistroPage implements OnInit {
 
   ngOnInit() {
     this.getRegiones();
-    this.getComunas();
+    // No es necesario obtener las comunas aquí, ya que se obtienen al cargar las regiones
   }
 
   async initStorage() {
     await this.storage.create();
   }
+
+  getComunasByRegion(regionId: number) {
+    this.comunas = []; // Limpiar la lista antes de cargar nuevas comunas
+
+    const fetchComunas = (page: number = 1) => {
+      const apiUrl = `https://dev.matiivilla.cl/duoc/location/comuna/${regionId}?page=${page}`;
+
+      this.http.get(apiUrl).subscribe(
+        (data: any) => {
+          console.log('Datos de la API:', data); // Imprime los datos de la API para depuración
+
+          if (data && data.data && data.data.length > 0) {
+            // Filtrar las comunas para que coincidan con la región seleccionada
+            const comunasByRegion: Comuna[] = data.data.filter((comuna: Comuna) => comuna.region_id === regionId);
+
+            // Agregar las comunas filtradas a la lista
+            this.comunas = this.comunas.concat(comunasByRegion);
+
+            // Verificar si hay más páginas y cargarlas si es necesario
+            if (data.pages > page) {
+              fetchComunas(page + 1);
+            }
+          }
+        },
+        (error) => {
+          console.error('Error al obtener las comunas:', error); // Imprime el error completo para depuración
+        }
+      );
+    };
+
+    fetchComunas(); // Iniciar la carga de comunas
+  }
+
 
   getRegiones() {
     this.http.get('https://dev.matiivilla.cl/duoc/location/region').subscribe(
@@ -45,23 +85,14 @@ export class RegistroPage implements OnInit {
         if (data && data.data && data.data.length > 0) {
           this.regions = data.data;
           this.selectedRegion = this.regions[0].id;
+          this.getComunasByRegion(this.selectedRegion);
         }
       },
       (error) => {
         console.error('Error al obtener las regiones:', error);
-      }
-    );
-  }
 
-  getComunas() {
-    this.http.get('https://dev.matiivilla.cl/duoc/location/comuna/7').subscribe(
-      (data: any) => {
-        if (data && data.data && data.data.length > 0) {
-          this.comunas = data.data;
-        }
-      },
-      (error) => {
-        console.error('Error al obtener las comunas:', error);
+        // Muestra un mensaje de error en la interfaz de usuario
+        this.presentAlert('Error al obtener regiones. Por favor, inténtelo de nuevo más tarde.');
       }
     );
   }

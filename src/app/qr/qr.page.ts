@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import * as QRCode from 'qrcode';
 
 @Component({
   selector: 'app-qr',
@@ -19,16 +20,13 @@ export class QrPage {
 
   async escanearQR() {
     try {
-      // Utilizar la función startScan directamente
       const result = await BarcodeScanner.startScan();
 
       if (!result.hasContent) {
-        // Escaneo cancelado o no se detectó ningún código QR
         return;
       }
 
-      // Código QR escaneado con éxito
-      this.router.navigate(['/asistencia']);
+      this.barcodes.push(result);
     } catch (error) {
       console.error('Error al escanear el QR', error);
       this.presentAlert('Error al escanear el QR. Por favor, intenta de nuevo.');
@@ -46,5 +44,19 @@ export class QrPage {
 
   irAAsistencia() {
     this.router.navigate(['/asistencia']);
+  }
+
+  generarCodigoQR() {
+    const datosQR = 'Nombre profesor: Iturra, Hora: ' + new Date().toLocaleTimeString() + ', Sala: L9';
+
+    QRCode.toDataURL(datosQR, (err, url) => {
+      if (err) {
+        console.error('Error al generar el código QR', err);
+        this.presentAlert('Error al generar el código QR. Por favor, intenta de nuevo.');
+      } else {
+        // Añadir el código QR a la lista
+        this.barcodes.push({ format: 'QR_CODE', rawValue: datosQR, imageUrl: url });
+      }
+    });
   }
 }
